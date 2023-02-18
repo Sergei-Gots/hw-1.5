@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -5,6 +7,106 @@ public class Main {
 
         task1();
         task2();
+        task3();
+        task4();
+        task5();
+    }
+
+    /* Задача 5
+        Напишите программу, которая определяет по номеру месяца в году,
+        к какому сезону этот месяц принадлежит. Например, 1-й месяц (он же январь) принадлежит к сезону зима.
+        Для написания программы используйте оператор switch.
+        Для обозначения номера месяца используйте переменную monthNumber = 12.
+        Пропишите условие, при котором программа не будет выполняться (номер месяца больше 13).
+     */
+    private static void task5() {
+        System.out.println("Task 5");
+
+        byte monthNumber = 13;
+
+        if (monthNumber < 0 || monthNumber > 12) {
+            System.out.println("The number " + monthNumber + " is not a number of month.");
+        } else {
+            System.out.print("The number of month is " + monthNumber + ". And this is ");
+            switch (monthNumber) {
+                case 12:
+                case 1:
+                case 2:
+                    System.out.print("a winter");
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    System.out.print("a spring");
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    System.out.print("a summer");
+                    break;
+                default:
+                    System.out.print("an autumn");
+            }
+            System.out.println(" month.");
+        }
+        System.out.println();
+    }
+
+    /* Задача 4
+            В банке для клиентов организовывается доставка карт на дом.
+            Чтобы известить клиента о том, когда будет доставлена его карта,
+            нужно знать расстояние от офиса до адреса доставки.
+        Правила доставки такие:
+            Доставка в пределах 20 км занимает сутки.
+            Доставка в пределах от 20 км до 60 км добавляет еще один день доставки.
+            Доставка в пределах 60 км до 100 км добавляет еще одни сутки.
+            Свыше 100 км доставки нет.
+        То есть с каждым следующим интервалом доставки срок увеличивается на 1 день.
+
+        Напишите программу, которая выдает сообщение в консоль: "Потребуется дней: " + срок доставки.
+        Объявите целочисленную переменную deliveryDistance = 95, которая содержит дистанцию до клиента.
+     */
+    private static void task4() {
+        System.out.println("Task 4");
+
+        short deliveryDistance = 95;
+
+        System.out.println("Дистанция до получателя составляет " + deliveryDistance + " км.");
+        if (deliveryDistance < 0) {
+            System.out.println("Для дистанции до клиента задано некорректное значение." );
+        } else if (deliveryDistance > 100) {
+            System.out.println("К сожалению, на дистанцию свыше 100 км доставка не предусмотрена.");
+        } else if (deliveryDistance < 20) {
+            System.out.println("Доставка (в пределах 20 км) занимает сутки.");
+        } else if (deliveryDistance < 60 ) {
+            System.out.println("Доставка (в пределах от 20 км до 60 км) займёт двое суток.");
+        } else if (deliveryDistance <= 100) {       //:)
+            System.out.println("Доставка (в пределах 60 км до 100 км включительно) займёт трое суток.");
+        }
+
+        System.out.println();
+    }
+
+    /* Задача 3
+        Напишите программу, которая определяет, является ли год високосным или нет.
+        Переменную года назовите year, в которую можно подставить значение интересующего нас года.
+        Например, 2021.
+        Программа должна определять, високосный год или нет, и выводить соответствующее сообщение:
+         « …. год является високосным» или «... год не является високосным».
+        Небольшая справка: високосным является каждый четвертый год, но не является каждый сотый.
+        Также високосным является каждый четырехсотый год.
+     */
+    private static void task3() {
+        System.out.println("Task 3");
+        short year = 1976;
+        System.out.print(year);
+        System.out.print(" год");
+
+        if (year % 4 != 0 ||
+            !(year % 100 != 0 || year % 400 == 0) ) {
+                System.out.print(" не");
+        }
+        System.out.println(" является високосным.");
     }
 
     /* Задача 2
@@ -25,7 +127,7 @@ public class Main {
             Важно: вложенность больше двух этажей не допускается (условный оператор внутри условного оператора).
     */
     private static void task2() {
-        System.out.println("Task2");
+        System.out.println("Task 2");
 
         OS clientOS = OS.ANDROID;
         short clientDeviceYear = 2013;
@@ -62,7 +164,7 @@ public class Main {
     };
 
     private static void task1() {
-        System.out.println("Task1");
+        System.out.println("Task 1");
 
         OS clientOS = OS.IOS;
 
